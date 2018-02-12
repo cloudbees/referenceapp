@@ -1,6 +1,6 @@
 
 def checkSonar() {
-    withSonarQubeEnv('My SonarQube Server') {
+    withSonarQubeEnv('Sonar') {
       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar'
       timeout(time: 5, unit: 'MINUTES') {
         def qg = waitForQualityGate()
