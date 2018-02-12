@@ -33,7 +33,7 @@ pipeline {
 
         container('maven') {
           sh 'mvn clean deploy'
-          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://192.168.64.7:32738/ -Dsonar.login=3d8b59b66720958723ed45692b2616d9de014289"
+          sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://192.168.64.7:32738/ -Dsonar.login=3d8b59b66720958723ed45692b2616d9de014289"
           sh "docker build -f Dockerfile.release -t $JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:\$(cat VERSION) ."
           sh "docker push $JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:\$(cat VERSION)"
         }
