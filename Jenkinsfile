@@ -1,6 +1,6 @@
 
 def checkSonar() {
-    withSonarQubeEnv('Sonar') {
+    withSonarQubeEnv('default') {
       sh 'mvn sonar:sonar'
       timeout(time: 5, unit: 'MINUTES') {
         def qualityGate = waitForQualityGate()
