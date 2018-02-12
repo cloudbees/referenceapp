@@ -25,11 +25,11 @@ pipeline {
           sh "mvn versions:set -DnewVersion=\$(jx-release-version)"
         }
 
-        dir ('./charts/referenceapp') {
-          container('maven') {
-            sh "make tag"
-          }
-        }
+        #dir ('./charts/referenceapp') {
+        #  container('maven') {
+        #    sh "make tag"
+        #  }
+        #}
 
         container('maven') {
           sh 'mvn clean deploy'
